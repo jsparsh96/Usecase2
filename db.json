@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "customerName": "Sparsh",
+      "emailId": "sparsh@mail.com",
+      "customerType": "Prime",
+      "phone": 4567898765,
+      "password": "123",
+      "id": 1
+    },
+    {
+      "customerName": "Shubham",
+      "emailId": "shubham@mail.com",
+      "customerType": "Prime",
+      "phone": 4567875434,
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "customerName": "amit",
+      "emailId": "amit@mail.com",
+      "customerType": "Normal",
+      "phone": 4567853456,
+      "password": "123",
+      "id": 3
+    },
+    {
+      "customerName": "Nitish",
+      "emailId": "nitish@mail.com",
+      "customerType": "Normal",
+      "phone": 2345676324,
+      "password": "weertry",
+      "id": 4
+    },
+    {
+      "customerName": "Nitish",
+      "emailId": "nitish.agrawal@wipro.com",
+      "customerType": "Prime",
+      "phone": 9971916273,
+      "password": "nitish123",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "IphoneX",
+      "description": "Best Iphone",
+      "price": 60000,
+      "priority": "Prime"
+    },
+    {
+      "id": 2,
+      "productName": "Iphone6",
+      "description": "Economic Iphone",
+      "price": 22000,
+      "priority": "Normal"
+    },
+    {
+      "id": 3,
+      "productName": "HP Laptop",
+      "description": "Best Laptop",
+      "price": 60000,
+      "priority": "Prime"
+    },
+    {
+      "id": 4,
+      "productName": "Acer Laptop",
+      "description": "Economic Iphone",
+      "price": 20000,
+      "priority": "Normal"
+    },
+    {
+      "id": 5,
+      "productName": "Safari Luggage",
+      "description": "Best Luggage",
+      "price": 10000,
+      "priority": "Prime"
+    },
+    {
+      "id": 6,
+      "productName": "Local",
+      "description": "Economic Luggage",
+      "price": 6000,
+      "priority": "Normal"
+    }
+  ]
+}
