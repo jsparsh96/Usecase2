@@ -40,10 +40,6 @@ class Usecase2App extends PolymerElement {
       '_routePageChanged(routeData.page)'
     ];
   }
-  ready(){
-    super.ready();
-  }
-
 
 
   /**
@@ -51,7 +47,6 @@ class Usecase2App extends PolymerElement {
   * @param {String} page 
   */
   _routePageChanged(page) {
-    console.log(page)
     if (!page) {
       this.page = 'login';
     } else if (['registration', 'home', 'login'].indexOf(page) !== -1) {
@@ -66,7 +61,6 @@ class Usecase2App extends PolymerElement {
    * @param {String} page 
    */
   _pageChanged(page) {
-    console.log(page)
     switch (page) {
       case 'registration':
         import('./registration-page.js');

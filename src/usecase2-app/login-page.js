@@ -11,8 +11,8 @@ import '@polymer/iron-ajax/iron-ajax.js';
  * @polymer
  */
 class LoginPage extends PolymerElement {
-  static get template() {
-    return html`
+    static get template() {
+        return html`
       <style>
         main{
           border-radius:8px;
@@ -88,52 +88,71 @@ background-color:rgb(216, 211, 211);
       <iron-ajax id="ajax" on-response="_handleResponse" on-error="_handleError" content-type="application/json" handle-as="json"></iron-ajax>
    
     `;
-  }
-  static get properties() {
-    return {
-      prop1: {
-        type: String,
-        value: 'login-page'
-      }
-    };
-  }
-  _handleLogin() {
-
-    if (this.$.login.validate()) {
-    //   let loginObj = { emailId: this.$.email.value, password: this.$.password.value };
-      // this._makeAjaxCall('#', 'post', loginObj)
-        let password= this.$.password.value;
-      let emailId=this.$.email.value;
-      console.log('fgh');
-      this._makeAjaxCall(`http://localhost:3000/users?emailId=${emailId}&&password=${password}`, 'get', null);
     }
-}
-_handleError() {
-}
+    /**
+   * Properties used here are defined here with some respective default value.
+   */
+    static get properties() {
+        return {
+            userData: {
+                type: Array,
+                value: []
+            }
+        };
+    }
 
-_handleRegister(){
-    window.history.pushState({}, null, '#/registration');
-    window.dispatchEvent(new CustomEvent('location-changed'));
-}
-_handleResponse(event) {
-    this.userData = event.detail.response[0];
-    if (this.userData != null) {
-        sessionStorage.setItem('userDetails',JSON.stringify(this.userData));
-        window.history.pushState({}, null, '#/home');
+    /**
+      *  validates if the user exist and logs in to the user portal
+      */
+    _handleLogin() {
+        if (this.$.login.validate()) {
+            //   let loginObj = { emailId: this.$.email.value, password: this.$.password.value };
+            // this._makeAjaxCall('#', 'post', loginObj)
+            let password = this.$.password.value;
+            let emailId = this.$.email.value;
+            this._makeAjaxCall(`http://localhost:3000/users?emailId=${emailId}&&password=${password}`, 'get', null);
+
+        }
+    }
+
+    /**
+     * Button for a new user registration
+     */
+    _handleRegister() {
+        window.history.pushState({}, null, '#/registration');
         window.dispatchEvent(new CustomEvent('location-changed'));
     }
-    else {
-        this.message='Invalid Credentials'
-        this.$.toast0.open();
+
+     /**
+     * @param {*} event 
+     * handling the response for the ajax request made
+     */
+    _handleResponse(event) {
+        this.userData = event.detail.response[0];
+        if (this.userData != null) {
+            sessionStorage.setItem('userDetails', JSON.stringify(this.userData));
+            window.history.pushState({}, null, '#/home');
+            window.dispatchEvent(new CustomEvent('location-changed'));
+        }
+        else {
+            this.message = 'Invalid Credentials'
+            this.$.toast0.open();
+        }
     }
-  }
-  _makeAjaxCall(url, method, postObj, action) {
-    const ajax = this.$.ajax;
-    ajax.method = method;
-    ajax.url = url;
-    ajax.body = postObj ? JSON.stringify(postObj) : undefined;
-    ajax.generateRequest();
-  }
+
+     /**
+    * function to make ajax calls
+    * @param {String} url 
+    * @param {String} method 
+    * @param {Object} postObj 
+    */
+    _makeAjaxCall(url, method, postObj) {
+        const ajax = this.$.ajax;
+        ajax.method = method;
+        ajax.url = url;
+        ajax.body = postObj ? JSON.stringify(postObj) : undefined;
+        ajax.generateRequest();
+    }
 }
 
 window.customElements.define('login-page', LoginPage);

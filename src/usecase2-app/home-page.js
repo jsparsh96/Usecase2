@@ -116,6 +116,10 @@ class HomePage extends PolymerElement {
        this.user = JSON.parse(sessionStorage.getItem('userDetails'));
        this._makeAjaxCall(`http://localhost:3000/products?priority=${this.user.customerType}`,`get`,null)
    }
+
+   /**
+    * Logout is performed here
+    */
     _handleLogout() {
         sessionStorage.clear();
         window.history.pushState({}, null, '#/login');
@@ -123,11 +127,21 @@ class HomePage extends PolymerElement {
         window.location.reload();
 
     }
-    // _handleError() {
-    // }
+    
+    /**
+     * @param {*} event
+     * response from the backend is handled here 
+     */
     _handleResponse(event) {
         this.products = event.detail.response;
     }
+
+     /**
+    * function to make ajax calls
+    * @param {String} url 
+    * @param {String} method 
+    * @param {Object} postObj 
+    */
     _makeAjaxCall(url, method, postObj, action) {
     const ajax = this.$.ajax;
     ajax.method = method;

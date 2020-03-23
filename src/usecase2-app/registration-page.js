@@ -98,10 +98,6 @@ background-color: #000000;
   }
   static get properties() {
     return {
-      prop1: {
-        type: String,
-        value: 'login-page'
-      },
       message:{
           type:String,
           value:''
@@ -109,9 +105,10 @@ background-color: #000000;
     };
   }
 
-   
+   /**
+    * validation of the user form is done and then registration
+    */
   _handleRegister() {
-
     if (this.$.register.validate()) {
       let userObj = {customerName:this.$.name.value,emailId:this.$.email.value,customerType:this.$.customerType.value, phone:parseInt(this.$.phone.value), password:this.$.password.value };
       console.log(userObj);
@@ -124,13 +121,14 @@ background-color: #000000;
 
     }
   }
-  _handleError() {
-    // alert('Mobile Number or Password is incorrect');
-  }
-//   _handleResponse() {
-//     let userData = event.detail.response;
-//     sessionStorage.setItem('userDetails', 'userData');
-//   }
+
+
+ /**
+    * function to make ajax calls
+    * @param {String} url 
+    * @param {String} method 
+    * @param {Object} postObj 
+    */
   _makeAjaxCall(url, method, postObj, action) {
     const ajax = this.$.ajax;
     ajax.method = method;
