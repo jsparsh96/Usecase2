@@ -39,6 +39,14 @@
       "phone": 9971916273,
       "password": "nitish123",
       "id": 5
+    },
+    {
+      "customerName": "Kusuma",
+      "emailId": "kusuma@mail.com",
+      "customerType": "Prime",
+      "phone": 2345677654,
+      "password": "123",
+      "id": 6
     }
   ],
   "products": [
